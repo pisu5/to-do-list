@@ -9,6 +9,7 @@ body {
 }
 
 .to-do-list {
+    
     text-align: center;
     background-color: #fff;
     padding: 20px;
@@ -23,6 +24,8 @@ body {
 }
 
 #addTask {
+    margin-top: 10px;
+    
     padding: 10px;
 }
 

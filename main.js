@@ -5,11 +5,13 @@ butt.addEventListener("click", function () {
   let input = document.querySelector("#taskInput");
 
   // Create a new list item
-  let listItem = document.createElement("li");
-  if (input === null || input.value.trim() === "") {
-    console.log("empty");
+  // Validate input inside the update button
+  if (validateInput(input)) {
+    console.log("Empty input during update");
     return;
   }
+
+  let listItem = document.createElement("li");
 
   // Create a text node with the task text
   let itemId = "items_" + Date.now();
@@ -27,10 +29,17 @@ butt.addEventListener("click", function () {
   document.getElementById("taskInput").value = "";
 
   let update = document.createElement("button");
+
   update.innerText = "Update";
   listItem.appendChild(update);
   update.addEventListener("click", function () {
     let getId = document.getElementById(itemId);
+    // Validate input inside the update button
+    if (validateInput(input)) {
+      console.log("Empty input during update");
+      return;
+    }
+
     getId.innerHTML = input.value;
     console.log("updated");
   });
@@ -38,6 +47,11 @@ butt.addEventListener("click", function () {
   dele.innerHTML = "delete";
   listItem.appendChild(dele);
   dele.addEventListener("click", function () {
+    listItem.remove();
     console.log("deleted");
   });
 });
+
+function validateInput(inputt) {
+  return inputt === null || inputt.value.trim() === "";
+}
